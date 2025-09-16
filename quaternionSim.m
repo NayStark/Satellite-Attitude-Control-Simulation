@@ -22,6 +22,25 @@ function qout = quatconj(q)
     qout = [q(1); -q(2:4)];
 end
 
+function R = quat2dcm(q)
+    q = q';
+    w = q(1);
+    x = q(2);
+    y = q(3);
+    z = q(4);
+    R = [1-2*(y^2+z^2), 2*(x*y - z*w), 2*(x*z+y*w);
+         2*(x*y+z*w), 1-2*(x^2+z^2), 2*(y*z - x*w);
+         2*(x*z-y*w), 2*(y*z+x*w), 1-2*(x^2+y^2)];
+end
+
+function drawSat(R)
+    [X,Y,Z] = ndgrid([-0.5 0.5],[-0.5 0.5],[-0.5 0.5]);
+    verts = [X(:) Y(:) Z(:)];
+    verts = (R * verts')';
+    K = convhull(verts);
+    patch('Vertices',verts,'Faces',K,'FaceColor',[0.2 0.6 0.9],'FaceAlpha',0.7);
+end
+
 % Initial Conditions
 I = diag([10, 15, 20]);
 invI = inv(I);
@@ -78,16 +97,64 @@ for k = 1:N-1
     time(k+1) = (k+1)*dt;
 end
 
+% Stuff for plots
+q_f = q_f';
+q_desired_1 = (q_desired(1)*ones(length(time),1))';
+q_desired_2 = (q_desired(2)*ones(length(time),1))';
+q_desired_3 = (q_desired(3)*ones(length(time),1))';
+q_desired_4 = (q_desired(4)*ones(length(time),1))';
+
 % Plot results
-figure(1);
+% Quaternion Evolution Plot
+figure(1); clf;
 subplot(2,1,1);
-plot(time, q_f, 'LineWidth', 2);
-xlabel('Time [s]'); ylabel('Quaternion');
-legend('q_0','q_1','q_2','q_3');
-title('Quaternion Evolution'); grid on;
+hold on;
+plot(time, q_f(:,1), 'b-', 'LineWidth', 1.8);
+plot(time, q_f(:,2), 'r-', 'LineWidth', 1.8);
+plot(time, q_f(:,3), 'g-', 'LineWidth', 1.8);
+plot(time, q_f(:,4), 'k-', 'LineWidth', 1.8);
+plot(time, q_desired_1, 'b--', 'LineWidth', 1.2);
+plot(time, q_desired_2, 'r--', 'LineWidth', 1.2);
+plot(time, q_desired_3, 'g--', 'LineWidth', 1.2);
+plot(time, q_desired_4, 'k--', 'LineWidth', 1.2);
+xlabel('Time [s]');
+ylabel('Quaternion');
+legend('q_0','q_{0,des}', ...
+       'q_1','q_{1,des}', ...
+       'q_2','q_{2,des}', ...
+       'q_3','q_{3,des}');
+title('Quaternion Evolution');
+grid on;
+hold off;
 
 subplot(2,1,2);
 plot(time, omega_f, 'LineWidth', 2);
 xlabel('Time [s]'); ylabel('\omega [rad/s]');
 legend('\omega_x','\omega_y','\omega_z');
-title('Angular Velocity'); grid on;
+title('Angular Velocity');
+grid on;
+
+% Cubesat Animation
+figure(2);
+clf;
+axis equal;
+grid on;
+hold on;
+xlabel('X');
+ylabel('Y');
+zlabel('Z');
+view(3);
+xlim([-1.5 1.5]);
+ylim([-1.5 1.5]);
+zlim([-1.5 1.5]);
+title('Satellite Attitude Animation');
+
+for k = 1:20:N
+    cla;
+    qk = q_f(k,:)';
+    R = quat2dcm(qk);
+    drawSat(R);
+    quiver3(0,0,0,0,1,0,'g','LineWidth',2,'MaxHeadSize',0.5);
+
+    pause(0.05);
+end
