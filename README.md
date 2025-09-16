@@ -68,4 +68,4 @@ where $q_{\text{err}}$ is the quaternion error between current and desired orien
 
 
 ### 3D CubeSat Animation  
-![Satellite Attitude Animation](https://i.imgur.com/QLdVsYD.gif)
+![satellite_attitude-ezgif com-optimize](https://github.com/user-attachments/assets/629fd0e3-9e36-4aa0-9f24-4d2c9507dbee)
