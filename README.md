@@ -3,6 +3,10 @@ This project demonstrates attitude dynamics and control of a satellite using qua
 
 ---
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/629fd0e3-9e36-4aa0-9f24-4d2c9507dbee" alt="Satellite Attitude Animation" width="500"/>
+</p>
+
 ## Quaternion-Based PD Controller for a CubeSat
 This project simulates the **attitude dynamics and control** of a CubeSat using quaternion representations. A PD controller is implemented to track a desired satellite orientation, rejecting angular motion and stabilizing the spacecraft.
 The simulation is written in GNU Octave (free alternative to MATLAB) and includes both plots of quaternion evolution and 3D animation of the satellite.
