@@ -2,14 +2,23 @@
 
 <p align="center">
 
-![MATLAB](https://img.shields.io/badge/MATLAB-Simulation-orange?logo=mathworks)
-![Control Systems](https://img.shields.io/badge/Control-PD%20Control-blue)
-![Dynamics](https://img.shields.io/badge/Domain-Rigid%20Body%20Dynamics-purple)
-![Attitude](https://img.shields.io/badge/Attitude-Control%20System-red)
-![Quaternion](https://img.shields.io/badge/Math-Quaternions-black)
-![Simulation](https://img.shields.io/badge/Type-Numerical%20Simulation-success)
-![Visualization](https://img.shields.io/badge/Output-3D%20Animation-brightgreen)
+<p align="center">
+
+![GNC](https://img.shields.io/badge/Domain-GNC-red)
+![ADCS](https://img.shields.io/badge/System-Attitude_Control-blueviolet)
+
+![MATLAB](https://img.shields.io/badge/MATLAB-Simulation-orange?logo=matlab)
+
+![Method](https://img.shields.io/badge/Control-PD_Control-blue)
+![Math](https://img.shields.io/badge/Quaternions-Rotation_Representation-black)
+![Physics](https://img.shields.io/badge/Rigid_Body-Dynamics-purple)
+
+![Simulation](https://img.shields.io/badge/Type-Attitude_Dynamics-success)
+![Output](https://img.shields.io/badge/Result-3D_Rotation-brightgreen)
+
 ![Status](https://img.shields.io/badge/Status-Completed-success)
+
+</p>
 
 </p>
 
