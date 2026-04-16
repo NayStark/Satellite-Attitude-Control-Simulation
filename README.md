@@ -1,4 +1,18 @@
 # Satellite Attitude Control Simulation
+
+<p align="center">
+
+![MATLAB](https://img.shields.io/badge/MATLAB-Simulation-orange?logo=mathworks)
+![Control Systems](https://img.shields.io/badge/Control-PD%20Control-blue)
+![Dynamics](https://img.shields.io/badge/Domain-Rigid%20Body%20Dynamics-purple)
+![Attitude](https://img.shields.io/badge/Attitude-Control%20System-red)
+![Quaternion](https://img.shields.io/badge/Math-Quaternions-black)
+![Simulation](https://img.shields.io/badge/Type-Numerical%20Simulation-success)
+![Visualization](https://img.shields.io/badge/Output-3D%20Animation-brightgreen)
+![Status](https://img.shields.io/badge/Status-Completed-success)
+
+</p>
+
 This project demonstrates attitude dynamics and control of a satellite using quaternion-based modeling. The simulation includes rigid-body dynamics, quaternion kinematics, and a PD controller that stabilizes the satellite’s orientation.
 
 ---
